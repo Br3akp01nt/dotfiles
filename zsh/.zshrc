@@ -131,3 +131,5 @@ source /usr/share/nvm/init-nvm.sh
 
 source ~/.zsh_profile
 
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
