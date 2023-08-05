@@ -18,7 +18,7 @@ import Data.Bifunctor (Bifunctor(first))
 
 myLayout = 
     Circle 
-    ||| combineTwo (TwoPane (1 % 10) (1 % 4)) Accordion (tabbed shrinkText def)
+    ||| combineTwo (TwoPane (1 % 10) (1 % 4)) Accordion (Mirror Accordion)
     ||| Full 
     ||| Accordion
 
