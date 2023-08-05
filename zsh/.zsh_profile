@@ -1,6 +1,0 @@
-export PATH="$HOME/.local/bin/scripts:$PATH"
-
-
-bindkey -s ^f "tmux-sessionizer\n"
-bindkey -s ^g "tmux-sessionizer $HOME\n"
-
