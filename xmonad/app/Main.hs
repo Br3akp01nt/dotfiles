@@ -24,7 +24,7 @@ myLayout =
 
 keybinds :: [((KeyMask, KeySym), X ())]
 keybinds =  
-    [ ((modmask, xK_l), spawn "xscreensaver-command --lock" >> spawn "echo 'locking' | dzen2 -p 4") 
+    [ ((modmask .|. shiftMask, xK_l), spawn "betterlockscreen -l" >> spawn "echo 'locking' | dzen2 -p 4") 
     ]
     <>
     map (first (modmask .|. controlMask .|. shiftMask, )) windowSwaps
