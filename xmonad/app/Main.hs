@@ -15,7 +15,7 @@ import XMonad.Layout.Tabbed
 
 myLayout = 
     Circle 
-    ||| combineTwo (TwoPane (1 % 10) (1 % 4)) Accordion (Mirror Accordion)
+    ||| combineTwo (TwoPane (1 % 10) (1 % 4)) Accordion (tabbed shrinkText def)
     ||| Full 
     ||| Accordion
 
