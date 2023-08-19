@@ -1,3 +1,5 @@
+{-# LANGUAGE TupleSections #-}
+
 module Main where
 
 import XMonad
@@ -11,6 +13,7 @@ import XMonad.Layout.WindowNavigation
 import XMonad.Util.EZConfig (additionalKeysP, additionalKeys)
 import XMonad.Layout.ComboP (SwapWindow(..))
 import XMonad.Layout.Tabbed
+import Data.Bifunctor (Bifunctor(first))
 
 
 myLayout = 
@@ -21,7 +24,10 @@ myLayout =
 
 keybinds :: [((KeyMask, KeySym), X ())]
 keybinds =  
-    map (\(ks, x) -> ((modmask .|. controlMask .|. shiftMask, ks), x)) windowSwaps
+    [ ((modmask, xK_l), spawn "xscreensaver-command --lock" >> spawn "echo 'locking' | dzen2 -p 4") 
+    ]
+    <>
+    map (first (modmask .|. controlMask .|. shiftMask, )) windowSwaps
   where
     windowSwaps = 
       [ (xK_Left,  sendMessage (Move L))
