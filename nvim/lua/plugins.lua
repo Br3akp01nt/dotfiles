@@ -60,6 +60,7 @@ packer.startup(function(use)
   use 'hrsh7th/vim-vsnip'
   use 'hrsh7th/cmp-vsnip'
 
+  use 'sindrets/diffview.nvim'
 
   end
 )

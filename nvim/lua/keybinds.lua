@@ -19,7 +19,9 @@ key_mapper('v', 'kj', '<ESC>')
 
 
 key_mapper('n', '<C-p>', ':lua require"telescope.builtin".find_files()<CR>')
+key_mapper('n', '<leader>tp', ':lua require"telescope.builtin".find_files({ hidden = true })<CR>')
 key_mapper('n', '<leader>ts', ':lua require"telescope.builtin".git_files()<CR>')
+key_mapper('n', '<leader>tS', ':lua require"telescope.builtin".git_files({ hidden = true })<CR>')
 key_mapper('n', '<leader>fs', ':lua require"telescope.builtin".live_grep()<CR>')
 key_mapper('n', '<leader>fh', ':lua require"telescope.builtin".help_tags()<CR>')
 key_mapper('n', '<leader>fb', ':lua require"telescope.builtin".buffers()<CR>')
@@ -72,4 +74,5 @@ key_mapper('n', '<C-E>', '10<C-e>')
 -- Fzf tmux from nvim
 key_mapper('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
 key_mapper('n', '<C-g>', '<cmd>silent !tmux neww tmux-sessionizer $HOME<CR>')
+
 
