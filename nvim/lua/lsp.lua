@@ -8,7 +8,7 @@ local default_config = {
 -- setup language servers here
 lspconfig.tsserver.setup(default_config)
 lspconfig.pyright.setup(default_config)
-lspconfig.vuels.setup(default_config)
+lspconfig.volar.setup(default_config)
 lspconfig.csharp_ls.setup({
     root_dir = function(startpath)
         return lspconfig.util.root_pattern("*.sln")(startpath)
