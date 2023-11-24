@@ -31,4 +31,5 @@ require('colors')
 require('leapkeys')
 require('trscontext')
 require('completion')
+require('aerialConf')
 
