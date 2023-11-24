@@ -30,6 +30,13 @@ packer.startup(function(use)
   use 'ThePrimeagen/harpoon'
   use 'christoomey/vim-tmux-navigator'
 
+  use({
+    "stevearc/aerial.nvim",
+    config = function()
+      require("aerial").setup()
+    end,
+  })
+
   use {
     'MrcJkb/haskell-tools.nvim',
     requires = {
