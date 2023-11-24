@@ -43,9 +43,6 @@ packer.startup(function(use)
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope.nvim'
     },
-    config = function()
-    end,
-    branch = '1.x.x'
   }
 
   use {
