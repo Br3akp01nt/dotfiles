@@ -9,6 +9,8 @@ local default_config = {
 lspconfig.tsserver.setup(default_config)
 lspconfig.pyright.setup(default_config)
 lspconfig.volar.setup(default_config)
+lspconfig.elmls.setup(default_config)
+lspconfig.purescriptls.setup(default_config)
 lspconfig.csharp_ls.setup({
     root_dir = function(startpath)
         return lspconfig.util.root_pattern("*.sln")(startpath)
