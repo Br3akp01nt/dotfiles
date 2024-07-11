@@ -8,7 +8,7 @@ import qualified Data.Time.Clock                as C
 import           XMonad                         hiding (restart)
 import           XMonad.Br3akp01nt.Programs
 import           XMonad.Layout.Accordion
-import           XMonad.Layout.Circle
+import           XMonad.Layout.CircleEx
 import           XMonad.Layout.Combo            (combineTwo)
 import           XMonad.Layout.ComboP           (SwapWindow (..))
 import qualified XMonad.Layout.Spacing          as SPC
@@ -21,15 +21,12 @@ import           XMonad.Util.EZConfig           (additionalKeys,
 
 modmask = mod1Mask
 
-terminalProgram :: String
-terminalProgram = "xfce4-terminal -e tmux"
-
 main :: IO ()
 main = xmonad
      $ def
      { layoutHook = SPC.spacingWithEdge 15 $ windowNavigation myLayout
      , modMask = modmask
-     , terminal = terminalProgram
+     , terminal = "xfce4-terminal -e tmux"
      , normalBorderColor = "#185c1f"
      , focusedBorderColor = "#58b8a5"
      , focusFollowsMouse = False
@@ -39,9 +36,16 @@ main = xmonad
 
 myLayout =
     combineTwo (TwoPane (1 % 10) (1 % 4)) Accordion (Mirror Accordion)
-    ||| Circle
+    ||| circleLayout
     ||| Full
     ||| Accordion
+
+circleLayout = circleEx 
+  { cNMaster = 1
+  , cStackRatio = toRational $ 1 / pi
+  , cMultiplier = 1
+  , cDelta = pi / 2
+  }
 
 keybinds :: [((KeyMask, KeySym), X ())]
 keybinds =
@@ -60,7 +64,12 @@ keybinds =
       ]
 
 restart :: X ()
-restart = spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi"
+restart = spawn $ unlines
+  [ "if type xmonad;"
+  , "  then xmonad --recompile && xmonad --restart;"
+  , "  else xmessage xmonad not in \\$PATH: \"$PATH\";"
+  , "fi"
+  ]
 
 dzen :: String -> Int -> X ()
 dzen m t = spawn $ "echo '" <> m <> "' | dzen2 -p " <> show t
