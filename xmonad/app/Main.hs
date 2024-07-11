@@ -2,20 +2,21 @@
 
 module Main where
 
-import XMonad hiding (restart)
-import qualified XMonad.Layout.Spacing as SPC
-import XMonad.Layout.Accordion
-import XMonad.Layout.Circle
-import XMonad.Layout.Combo (combineTwo)
-import XMonad.Layout.TwoPane (TwoPane(TwoPane))
-import Data.Ratio ((%))
-import XMonad.Layout.WindowNavigation
-import XMonad.Util.EZConfig (additionalKeysP, additionalKeys)
-import XMonad.Layout.ComboP (SwapWindow(..))
-import XMonad.Layout.Tabbed
-import Data.Bifunctor (Bifunctor(first))
-import qualified Data.Time.Clock as C
-import XMonad.Br3akp01nt.Programs
+import           Data.Bifunctor                 (Bifunctor (first))
+import           Data.Ratio                     ((%))
+import qualified Data.Time.Clock                as C
+import           XMonad                         hiding (restart)
+import           XMonad.Br3akp01nt.Programs
+import           XMonad.Layout.Accordion
+import           XMonad.Layout.Circle
+import           XMonad.Layout.Combo            (combineTwo)
+import           XMonad.Layout.ComboP           (SwapWindow (..))
+import qualified XMonad.Layout.Spacing          as SPC
+import           XMonad.Layout.Tabbed
+import           XMonad.Layout.TwoPane          (TwoPane (TwoPane))
+import           XMonad.Layout.WindowNavigation
+import           XMonad.Util.EZConfig           (additionalKeys,
+                                                 additionalKeysP)
 
 
 modmask = mod1Mask
@@ -24,8 +25,8 @@ terminalProgram :: String
 terminalProgram = "xfce4-terminal -e tmux"
 
 main :: IO ()
-main = xmonad 
-     $ def 
+main = xmonad
+     $ def
      { layoutHook = SPC.spacingWithEdge 15 $ windowNavigation myLayout
      , modMask = modmask
      , terminal = terminalProgram
@@ -36,21 +37,21 @@ main = xmonad
      , startupHook = "XMonad started" `dzen` 4
      } `additionalKeys` keybinds
 
-myLayout = 
+myLayout =
     combineTwo (TwoPane (1 % 10) (1 % 4)) Accordion (Mirror Accordion)
-    ||| Circle 
-    ||| Full 
+    ||| Circle
+    ||| Full
     ||| Accordion
 
 keybinds :: [((KeyMask, KeySym), X ())]
-keybinds =  
-    [ ((modmask .|. shiftMask, xK_l), lockscreen) 
+keybinds =
+    [ ((modmask .|. shiftMask, xK_l), lockscreen)
     , ((modmask, xK_q), "rebuilding and restarting xmonad" `dzen` 4 >> restart)
     ]
     <>
     map (first (modmask .|. controlMask .|. shiftMask, )) windowSwaps
   where
-    windowSwaps = 
+    windowSwaps =
       [ (xK_Left,  sendMessage $ Move L)
       , (xK_Down,  sendMessage $ Move D)
       , (xK_Up,    sendMessage $ Move U)
