@@ -18,7 +18,6 @@ packer.startup(function(use)
   use('wbthomason/packer.nvim')
   
   use 'nvim-treesitter/nvim-treesitter'
-  use 'nvim-treesitter/nvim-treesitter-context'
   use 'sheerun/vim-polyglot'
 
   use 'neovim/nvim-lspconfig'
@@ -62,6 +61,8 @@ packer.startup(function(use)
   use 'hrsh7th/cmp-vsnip'
 
   use 'sindrets/diffview.nvim'
+
+  use 'chrisbra/unicode.vim'
 
   end
 )

@@ -6,7 +6,7 @@ local default_config = {
   on_attach = custom_on_attach,
 }
 -- setup language servers here
-lspconfig.tsserver.setup(default_config)
+lspconfig.ts_ls.setup(default_config)
 lspconfig.pyright.setup(default_config)
 lspconfig.volar.setup(default_config)
 lspconfig.elmls.setup(default_config)
@@ -61,10 +61,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>f', function()
       vim.lsp.buf.format { async = true }
     end, opts)
-
-    vim.keymap.set("n", "[c", function()
-      require("treesitter-context").go_to_context()
-    end, { silent = true })
 
     -- goto preview
     vim.keymap.set('n', 'gpd', function()
