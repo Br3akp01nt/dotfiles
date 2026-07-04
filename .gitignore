@@ -2,5 +2,10 @@
 /nvim/plugin
 /tmux/plugins
 /zsh/.zsh_profile
-/xmonad/dist-newstyle
+/pwsh/profile.ps1
+*.rendered.ghci
+turtle/turtle-profile-local/*
+turtle/src/Profile.hs
+turtle/turtle
+*/dist-newstyle
 /xmonad/cabal.project.local

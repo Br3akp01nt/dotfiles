@@ -1,4 +1,3 @@
-local lspconfig = require'lspconfig'
 local function custom_on_attach(client)
   print('Attaching to ' .. client.name)
 end
@@ -6,12 +5,16 @@ local default_config = {
   on_attach = custom_on_attach,
 }
 -- setup language servers here
-lspconfig.ts_ls.setup(default_config)
-lspconfig.pyright.setup(default_config)
-lspconfig.volar.setup(default_config)
-lspconfig.elmls.setup(default_config)
-lspconfig.purescriptls.setup(default_config)
-lspconfig.csharp_ls.setup({
+vim.lsp.config('ts_ls', default_config)
+vim.lsp.enable('ts_ls')
+
+vim.lsp.config('pyright', default_config)
+vim.lsp.enable('pyright')
+
+vim.lsp.config('vue_ls', default_config)
+vim.lsp.enable('vue_ls')
+
+vim.lsp.config('csharp_ls', {
     root_dir = function(startpath)
         return lspconfig.util.root_pattern("*.sln")(startpath)
             or lspconfig.util.root_pattern("*.csproj")(startpath)
@@ -20,7 +23,14 @@ lspconfig.csharp_ls.setup({
     end,
     on_attach = custom_on_attach,
     capabilities = capabilities,
-})
+  })
+vim.lsp.enable('csharp_ls')
+
+vim.lsp.config('elmls', default_config)
+vim.lsp.enable('elmls')
+
+vim.lsp.config('purescriptls', default_config)
+vim.lsp.enable('purescriptls')
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

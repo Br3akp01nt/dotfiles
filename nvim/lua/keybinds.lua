@@ -14,17 +14,18 @@ key_mapper('', '<right>', '<nop>')
 key_mapper('', 'Q', '<nop>')
 key_mapper('i', 'jk', '<ESC>')
 key_mapper('i', 'kj', '<ESC>')
-key_mapper('v', 'jk', '<ESC>')
-key_mapper('v', 'kj', '<ESC>')
 
 
 key_mapper('n', '<C-p>', ':lua require"telescope.builtin".find_files()<CR>')
-key_mapper('n', '<leader>tp', ':lua require"telescope.builtin".find_files({ hidden = true })<CR>')
+key_mapper('n', '<leader>tp', ':lua require"telescope.builtin".find_files({ hidden = true, ignored = true })<CR>')
 key_mapper('n', '<leader>ts', ':lua require"telescope.builtin".git_files()<CR>')
 key_mapper('n', '<leader>tS', ':lua require"telescope.builtin".git_files({ hidden = true })<CR>')
 key_mapper('n', '<leader>fs', ':lua require"telescope.builtin".live_grep()<CR>')
 key_mapper('n', '<leader>fh', ':lua require"telescope.builtin".help_tags()<CR>')
 key_mapper('n', '<leader>fb', ':lua require"telescope.builtin".buffers()<CR>')
+key_mapper('n', '<leader>tt', ':lua require"telescope.builtin".treesitter()<CR>')
+key_mapper('n', '<leader>tq', ':lua require"telescope.builtin".builtin()<CR>')
+key_mapper('n', '<leader>fw', ':lua require"telescope.builtin".grep_string()<CR>')
 key_mapper('n', '<leader>gr', ':lua require"telescope.builtin".lsp_references()<CR>')
 key_mapper('n', '<leader>tch', ':lua require"telescope.builtin".command_history()<CR>')
 key_mapper('n', '<leader>th', ':lua require"telescope.builtin".search_history()<CR>')
@@ -86,4 +87,8 @@ key_mapper('n', '<C-E>', '10<C-e>')
 key_mapper('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
 key_mapper('n', '<C-g>', '<cmd>silent !tmux neww tmux-sessionizer $HOME<CR>')
 
+
+-- haskell-tools
+key_mapper('n', '<leader>hs', ':lua require("haskell-tools").hoogle.hoogle_signature()<CR>')
+key_mapper('n', '<leader>he', 'require("haskell-tools").lsp.buf_eval_all()<CR>')
 

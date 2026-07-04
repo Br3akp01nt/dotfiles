@@ -1,0 +1,14 @@
+:set -XOverloadedStrings
+:set +m
+
+import Turtle as TU
+import Turtle.Prelude as TU
+import qualified Control.Foldl as F
+import qualified System.Process as P
+import qualified Data.Text as T
+import qualified System.Directory as Dir
+import qualified Network.HTTP.Req as Req
+
+:load <SCRIPT-LOCATION>
+:def! go (\_ -> let d = "<WORKING-DIRECTORY>" in pure $ "Dir.setCurrentDirectory " <> show d)
+

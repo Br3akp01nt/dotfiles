@@ -1,0 +1,7 @@
+packages:
+  .
+  ./turtle/local/lib
+  ./turtle/local/script
+  ./turtle/shared/lib
+  ./turtle/shared/script
+
