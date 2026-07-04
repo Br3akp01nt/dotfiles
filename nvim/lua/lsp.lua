@@ -26,6 +26,12 @@ vim.lsp.config('csharp_ls', {
   })
 vim.lsp.enable('csharp_ls')
 
+vim.lsp.config('elmls', default_config)
+vim.lsp.enable('elmls')
+
+vim.lsp.config('purescriptls', default_config)
+vim.lsp.enable('purescriptls')
+
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
@@ -65,10 +71,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>f', function()
       vim.lsp.buf.format { async = true }
     end, opts)
-
-    vim.keymap.set("n", "[c", function()
-      require("treesitter-context").go_to_context()
-    end, { silent = true })
 
     -- goto preview
     vim.keymap.set('n', 'gpd', function()

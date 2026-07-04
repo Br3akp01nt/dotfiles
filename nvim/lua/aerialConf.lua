@@ -16,7 +16,6 @@ require("aerial").setup({
 
   disable_max_lines = 50000,
 })
-
 -- You probably also want to set a keymap to toggle aerial
 vim.keymap.set("n", "<leader>ae", "<cmd>AerialToggle!<CR>")
 

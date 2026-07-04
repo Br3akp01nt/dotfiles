@@ -8,3 +8,4 @@ turtle/turtle-profile-local/*
 turtle/src/Profile.hs
 turtle/turtle
 */dist-newstyle
+/xmonad/cabal.project.local

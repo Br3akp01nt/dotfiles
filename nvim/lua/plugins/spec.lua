@@ -59,6 +59,8 @@ return {
       }
   },
 
-  { "rmagatti/goto-preview" }
+  { "rmagatti/goto-preview" },
+
+  { "chrisbra/unicode.vim" }
 }
 
