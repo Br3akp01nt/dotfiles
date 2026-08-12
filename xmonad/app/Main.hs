@@ -35,17 +35,9 @@ main = xmonad
      } `additionalKeys` keybinds
 
 myLayout =
-    combineTwo (TwoPane (1 % 10) (1 % 4)) Accordion (Mirror Accordion)
-    ||| circleLayout
-    ||| Full
+    Full
+    ||| combineTwo (TwoPane (1 % 10) (1 % 4)) Accordion (Mirror Accordion)
     ||| Accordion
-
-circleLayout = circleEx 
-  { cNMaster = 1
-  , cStackRatio = toRational $ 1 / pi
-  , cMultiplier = 1
-  , cDelta = pi / 2
-  }
 
 keybinds :: [((KeyMask, KeySym), X ())]
 keybinds =

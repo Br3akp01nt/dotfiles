@@ -7,7 +7,7 @@ extra-source-files: CHANGELOG.md
 
 executable br3akp01nt-xmonad-config
     main-is:          Main.hs
-    build-depends:    base ^>=4.19.1.0,
+    build-depends:    base ^>=4.21.0.0,
                       br3akp01nt-xmonad-config:lib,
                       xmonad,
                       xmonad-contrib,
@@ -20,7 +20,7 @@ library lib
     hs-source-dirs:   lib
     exposed-modules:  XMonad.Br3akp01nt.Programs
     other-modules:
-    build-depends:    base ^>=4.19.1.0,
+    build-depends:    base ^>=4.21.0.0,
                       xmonad,
                       xmonad-contrib
     hs-source-dirs:   lib
