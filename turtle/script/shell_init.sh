@@ -1,0 +1,19 @@
+INIT_SCRIPT_LOCATION="$1"
+INIT_SCRIPT_DIR=$(dirname "$INIT_SCRIPT_LOCATION")
+INIT_SCRIPT_FILE_NAME=$(basename "$INIT_SCRIPT_LOCATION")
+INIT_SCRIPT_RENDERED_FILE_NAME="${INIT_SCRIPT_FILE_NAME}.rendered.ghci"
+INIT_SCRIPT_RENDERED_LOCATION="${INIT_SCRIPT_DIR}/${INIT_SCRIPT_RENDERED_FILE_NAME}"
+PROFILE_LOCATION="${INIT_SCRIPT_DIR}/${src/Profile.hs}"
+
+{
+    cat "$INIT_SCRIPT_LOCATION" \
+    | sed \
+      -e "s|<SCRIPT-LOCATION>|$PROFILE_LOCATION|g" \
+      -e "s|<WORKING-DIRECTORY>|$PWD|g"
+} > "$INIT_SCRIPT_RENDERED_LOCATION"
+
+cabal repl -v1 --project-dir "$INIT_SCRIPT_DIR" \
+  --builddir "$2" \
+  --repl-options="-w -ghci-script ${INIT_SCRIPT_RENDERED_LOCATION}" \
+  turtle-profile:lib
+
