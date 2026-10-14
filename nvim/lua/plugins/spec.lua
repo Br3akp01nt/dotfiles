@@ -1,6 +1,5 @@
 return {
-  { "neovim-treesitter/treesitter-parser-registry" },
-  { "neovim-treesitter/nvim-treesitter" },
+  { "nvim-treesitter/nvim-treesitter" },
   { "sheerun/vim-polyglot" },
 
   { "romus204/tree-sitter-manager.nvim" },
